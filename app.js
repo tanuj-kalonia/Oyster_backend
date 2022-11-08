@@ -34,8 +34,13 @@ app.use(cors({
     origin: "*",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
+    "Access-Control-Allow-Origin": "*"
+
 }));
 
+app.get('/', (req, res) => {
+    res.send('Oyster API');
+})
 
 // Routes
 import { userRouter } from "./routes/userRoutes.js";
