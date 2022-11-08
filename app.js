@@ -30,13 +30,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const corsOptions = {
-    origin: '*',
-    credentials: true,            //access-control-allow-credentials:true
-    optionSuccessStatus: 200,
-}
+app.use(cors({
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+}));
 
-app.use(cors(corsOptions));
+
 // Routes
 import { userRouter } from "./routes/userRoutes.js";
 import { taskRouter } from "./routes/taskRoutes.js";
