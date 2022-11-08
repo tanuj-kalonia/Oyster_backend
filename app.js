@@ -38,8 +38,11 @@ app.use(cors({
 
 }));
 
-app.get('/', (req, res) => {
-    res.send('Oyster API');
+app.get("/", (req, res) => {
+    res.send(`
+   <h1>
+        Site is working
+   </h1>`)
 })
 
 // Routes
