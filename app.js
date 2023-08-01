@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import passport from "passport";
 import cors from "cors";
-import expressSession from "express-session";
+import session from "cokkie-session";
 import { connectDB } from "./config/database.js";
 import { initializePassport } from "./utility/passportConfig.js";
 
@@ -13,13 +13,15 @@ connectDB();
 const app = express();
 initializePassport(passport);
 
-app.use(
-    expressSession({
-        secret: "secret",
-        resave: false,
-        saveUninitialized: false,
-    })
-);
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: false,
+    maxAge: 1000 * 60 * 15,
+    cookie: {
+        secure: true
+    }
+}));
 
 // Express Session
 app.use(passport.initialize());
@@ -29,6 +31,7 @@ app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 
 app.use(cors({
     origin: "*",
