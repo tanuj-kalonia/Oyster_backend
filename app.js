@@ -38,17 +38,12 @@ app.use(cors({
 
 }));
 
-app.get("/", (req, res) => {
-    res.send(`
-   <h1>
-        Site is working
-   </h1>`)
-})
 
 // Routes
 import { userRouter } from "./routes/userRoutes.js";
 import { taskRouter } from "./routes/taskRoutes.js";
 import { getRouter } from "./routes/getRoute.js"
+
 app.use("/api/v1/auth", userRouter);
 app.use("/api/v1/task", taskRouter);
 app.use('/api/v1/user', getRouter);
