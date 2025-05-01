@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import passport from "passport";
 import cors from "cors";
-import session from "cokkie-session";
+import session from "cookie-session";
 import { connectDB } from "./config/database.js";
 import { initializePassport } from "./utility/passportConfig.js";
 
